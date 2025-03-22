@@ -1,13 +1,13 @@
-<div class="mx-8">
-<div class="flex flex-col content-center m-0 m-auto">
-    <h1 align="center" class="text-2xl md:text-3xl my-8">★ SQL playground ★</h1>
-    <p class="mb-4">
-    This playground is an accompaniment to <a class="text-pink-800"
+<div class="main-section">
+<div class="main-header">
+    <h1>★ SQL playground ★</h1>
+    <p>
+    This playground is an accompaniment to <a
         href="https://wizardzines.com/zines/sql">Become a SELECT Star!</a>.
     It contains all the SQL example tables in the zine so you can practice SELECTs a
     little bit.
     </p>
-    <p class="mb-4">
+    <p class="main-table-links">
     Tables:
 <TableLink table=addresses v-bind:setGuess='setGuess'></TableLink>,
 <TableLink table=baby_log v-bind:setGuess='setGuess'></TableLink>,
@@ -25,24 +25,21 @@
 <TableLink table=users v-bind:setGuess='setGuess'></TableLink>
     </p>
 </div>
-<div class="md:flex md:flex-row md:flex-wrap mt-8">
-    <div class="mb-8 md:w-1/2 w-full md:flex-grow">
+<div class="query-section">
+    <div class="query-container">
         <div>
             <textarea v-model="guess.query" 
-                      class="font-mono w-full shadow appearance-none border
-                      rounded-lg mb-2 h-48 py-2 px-3 bg-gray-100
-                      text-gray-700 leading-tight focus:outline-none
-                      focus:shadow-outline" id="query" placeholder="SELECT ... FROM .... WHERE ... GROUP BY ... HAVING ... ORDER BY ... LIMIT ...">
+                      class="query-container-textarea" id="query" placeholder="SELECT ... FROM .... WHERE ... GROUP BY ... HAVING ... ORDER BY ... LIMIT ...">
             </textarea>
-            <button v-on:click="runQuery" class="plausible-event-name=run-query bg-pink-800 text-pink-100 hover:bg-pink-500  hover:text-pink-100 mb-2 font-bold py-2 px-4 rounded text-left">
+            <button v-on:click="runQuery" plausible-event-name="run-query" class="query-button">
                 Run query
             </button>
         </div>
         <Table v-bind:wide="true" title="Your results" v-if="guess.result || guess.error" v-bind:query="guess"> </Table>
     </div>
-    <div class="md:pl-8">
-        <h2 class="text-2xl pb-4">Examples</h2>
-        <div class="text-xs md:text-sm overflow-scroll px-2 bg-gray-100 rounded-lg" id="examples">
+    <div class="examples-container">
+        <h2>Examples</h2>
+        <div class="examples">
             <Example query="
 SELECT * from cats
 WHERE name = 'daisy'
@@ -95,11 +92,11 @@ ROW_NUMBER()
 FROM grades
             "
                      v-bind:setGuess='setGuess'> </Example>
-            <!--
-            <Example query="
+          
+            <!-- <Example query="
             "
-                     v-bind:setGuess='setGuess'> </Example>
-            -->
+                     v-bind:setGuess='setGuess'> </Example> -->
+         
             <Example query="
 SELECT name,
    price - COALESCE(discount,0)
@@ -182,4 +179,3 @@ HAVING count(*) > 2)
     </div>
 </div>
 </div>
-
