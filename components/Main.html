@@ -31,7 +31,7 @@
             <textarea v-model="guess.query" 
                       class="query-container-textarea" id="query" placeholder="SELECT ... FROM .... WHERE ... GROUP BY ... HAVING ... ORDER BY ... LIMIT ...">
             </textarea>
-            <button v-on:click="runQuery" plausible-event-name="run-query" class="query-button">
+            <button v-on:click="runQuery" class="query-button plausible-event-name=run-query">
                 Run query
             </button>
         </div>
